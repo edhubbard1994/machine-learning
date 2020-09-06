@@ -1,13 +1,15 @@
 import csv
 import numpy
 
-MATRIX = numpy.array()
+#MATRIX = numpy.array()
+FARE_INDEX = 8
+PID_INDEX = 0
 
-def loadData():
+def load_data():
     with open("titanic/test.csv") as file:
         data = csv.reader(file)
         for row in data:
-            pass
+            print(row)
 
 
 
@@ -16,4 +18,4 @@ def loadData():
 
 
 if __name__ == "__main__":
-    pass
+    load_data()
