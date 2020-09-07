@@ -10,7 +10,7 @@ FARES = list()
 FARE_METRICS = dict()
 
 def compare_data():
-    pass
+    avg = mean(FARES)
 
 def load_data():
     with open("titanic/test.csv") as file:
