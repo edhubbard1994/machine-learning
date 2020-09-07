@@ -1,22 +1,28 @@
 import csv
 import numpy
+from passenger import Passenger
 from statistics import mean, median, stdev
 
 #MATRIX = numpy.array()
-SURVIVERS = dict()
-FARE_INDEX = 8
-PID_INDEX = 0
-FARES = list()
-FARE_METRICS = dict()
+PASSENGERS = dict()
 
-def compare_data():
-    avg = mean(FARES)
+
+def make_predictions():
+    fares = list()
+    for p_id, passenger in PASSENGERS.items():
+        pass
+
 
 def load_data():
     with open("titanic/test.csv") as file:
         data = csv.reader(file)
         for row in data:
-            FARES.append(row[FARE_INDEX])
+            PASSENGERS[int(row[0])] = Passenger(
+                int(row[0]),
+                int(row[1]),
+                int(row[4]),
+                float(row[8])
+            )
     file.close()
 
 
@@ -26,9 +32,13 @@ def load_survivers():
     with open("titanic/gender_submission.csv") as file:
         data = csv.reader(file)
         for row in data:
-            SURVIVERS[row[0]] = row[1]
+            try:
+                passenger = PASSENGERS[int(row[0])]
+                passenger.set_actual_survival(row[1])
+            except Exception as e:
+                print("no passenger with id" + row[0])
+
     file.close()
-    print(SURVIVERS)
 
 
 
@@ -38,4 +48,5 @@ def load_survivers():
 
 
 if __name__ == "__main__":
+    load_data()
     load_survivers()
