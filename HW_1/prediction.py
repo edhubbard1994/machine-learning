@@ -1,17 +1,23 @@
 import csv
 import numpy
+from statistics import mean, median, stdev
 
 #MATRIX = numpy.array()
 SURVIVERS = dict()
 FARE_INDEX = 8
 PID_INDEX = 0
 FARES = list()
+FARE_METRICS = dict()
+
+def compare_data():
+    pass
 
 def load_data():
     with open("titanic/test.csv") as file:
         data = csv.reader(file)
         for row in data:
-            print(row)
+            FARES.append(row[FARE_INDEX])
+    file.close()
 
 
 
@@ -21,7 +27,8 @@ def load_survivers():
         data = csv.reader(file)
         for row in data:
             SURVIVERS[row[0]] = row[1]
-        print(SURVIVERS)
+    file.close()
+    print(SURVIVERS)
 
 
 
