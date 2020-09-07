@@ -4,13 +4,12 @@ average fare paid by passengers.
 
 """
 
-
 import csv
 import numpy
 from passenger import Passenger
 from statistics import mean, median, stdev
 
-#MATRIX = numpy.array()
+
 PASSENGERS = dict()
 
 
@@ -28,7 +27,6 @@ def make_predictions():
         len(PASSENGERS)))
     percent = (accurate_predictions/len(PASSENGERS)) * 100
     print("\n this is a {} % accuracy \n\n".format(percent))
-
 
 
 def load_data():
@@ -49,31 +47,19 @@ def load_data():
     file.close()
 
 
-
-
 def load_survivers():
     with open("titanic/gender_submission.csv") as file:
         data = csv.reader(file)
         count = 0
-        #print(PASSENGERS)
         for row in data:
             if count > 0:
                 try:
                     passenger = PASSENGERS[int(row[0])]
-                    #print(passenger)
                     passenger.set_actual_survival(row[1])
                 except Exception as e:
-                    pass
-                    #print(str(e))
-                    #print("no passenger with id " + row[0])
+                    pass # passenger does not have fare
             count = count + 1
-
     file.close()
-
-
-
-
-
 
 
 
