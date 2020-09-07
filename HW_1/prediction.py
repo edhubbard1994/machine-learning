@@ -1,3 +1,10 @@
+"""
+This script attempts to predict survival of a titanic passenger based on the
+average fare paid by passengers.
+
+"""
+
+
 import csv
 import numpy
 from passenger import Passenger
@@ -10,7 +17,18 @@ PASSENGERS = dict()
 def make_predictions():
     fares = list()
     for p_id, passenger in PASSENGERS.items():
-        pass
+        fares.append(passenger.fare)
+    alpha = mean(fares)
+    accurate_predictions = 0
+    
+    for p_id, passenger in PASSENGERS.items():
+        accurate_predictions = accurate_predictions + int(passenger.predict(alpha))
+    print("There were {} accurately predicted survivors of {}".format(
+        accurate_predictions,
+        len(PASSENGERS)))
+    percent = (accurate_predictions/len(PASSENGERS)) * 100
+    print("\n this is a {} % accuracy \n\n".format(percent))
+
 
 
 def load_data():
@@ -62,3 +80,4 @@ def load_survivers():
 if __name__ == "__main__":
     load_data()
     load_survivers()
+    make_predictions()

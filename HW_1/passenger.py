@@ -14,6 +14,9 @@ class Passenger:
     def predict(self, alpha):
         if self.fare > alpha:
             self.predicted_to_survive = True
+        #print("passenger:{} predicted survival = {} and the actual survival = {}".format(self.p_id,self.predicted_to_survive,self.survived))
+        return self.predicted_to_survive == self.survived
+
 
     def set_actual_survival(self, did_survive):
         self.survived = bool(did_survive)
