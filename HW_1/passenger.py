@@ -1,4 +1,6 @@
-
+"""
+Passenger class for better code organization 
+"""
 
 
 class Passenger:
