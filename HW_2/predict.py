@@ -90,7 +90,7 @@ def titanic():
         else:
             tot.append(0)
     total = reduce(add_up,tot, 0)
-    print(total/len(tot) * 100)
+    print(total/len(tot) * 100) #accuracy percentatge
     
 def add_up(x,y):
     return x + y
